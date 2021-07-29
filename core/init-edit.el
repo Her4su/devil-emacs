@@ -158,7 +158,6 @@
   :config
   (use-package flyspell-correct
     :bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper)))
-  (use-package flyspell-correct-ivy)
   (use-package flyspell-correct-popup))
 
 ;; Framework for mode-specific buffer indexes
@@ -224,7 +223,7 @@
   :custom
   (dumb-jump-quiet t)
   (dumb-jump-aggressive t)
-  (dumb-jump-selector 'ivy)
+  (dumb-jump-selector 'pop-up)
   (dumb-jump-prefer-searcher 'rg)
   (dumb-jump-disable-obsolete-warnings t))
 

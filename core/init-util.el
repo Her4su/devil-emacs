@@ -214,7 +214,7 @@
       "<tab>" '("indent"))
     (which-key-add-key-based-replacements
       "C-c @" "hs"
-      "C-c v" "ivy"
+      "C-c v" "magic"
       "C-c p" "persp"
       "C-c f" "check"
       "C-c c" "code")))

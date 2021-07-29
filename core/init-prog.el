@@ -72,10 +72,7 @@
   :hook (after-init . yas-global-mode)
   :bind (("C-c y" . yas-visit-snippet-file))
   :config
-  (use-package yasnippet-snippets)
-  ;; integrate yasnippet
-  (use-package ivy-yasnippet
-    :bind (([remap yas-visit-snippet-file] . ivy-yasnippet))))
+  (use-package yasnippet-snippets))
 
 (use-package lsp-mode
   :hook

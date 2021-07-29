@@ -1,156 +1,172 @@
-;;; init-search.el --- ivy configuration
+;;; init-search.el --- search configuration
 ;;; Commentary:
-;; ivy fuzzy complement framework
-;; thiner but powerful enough
+;; fuzzy complement framework
 
 ;;; Code:
-(use-package ivy
-  :bind (("C-r" . ivy-resume)
-         ("C-c c j" . lsp-ivy-workspace-symbol)
-         ("C-c c J" . lsp-ivy-global-workspace-symbol))
-  :config
 
-  (use-package xref
-    :ensure nil
-    :unless (>= emacs-major-version 28)
-    :custom
-    (xref-show-xrefs-function #'xref-show-definitions-buffer-at-bottom)
-    (xref-show-definitions-function #'xref-show-definitions-buffer-at-bottom))
-
-  (use-package ivy-hydra
-    :commands ivy-hydra-read-action
-    :init (setq ivy-read-action-function #'ivy-hydra-read-action)))
-
-(use-package counsel
-  :diminish ivy-mode counsel-mode
-  :bind (("C-c i" . ivy-resume)
-         ("C-c v p" . ivy-push-view)
-         ("C-c v o" . ivy-pop-view)
-         ("M-*" . ivy-immediate-done)
-         ("C-," . counsel-switch-buffer)
-         :map ivy-minibuffer-map
-         ("C-w" . ivy-yank-word)
-         :map counsel-find-file-map
-         ("C-h" . counsel-up-directory)
-         :map swiper-map
-         ("M-s" . swiper-isearch-toggle)
-         ("M-%" . swiper-query-replace)
-         :map isearch-mode-map
-         ("M-s" . swiper-isearch-toggle)
-         :map counsel-mode-map
-         ([remap amx] . counsel-M-x)
-         ([remap isearch-forward] . swiper-isearch)
-         ([remap isearch-backward] . swiper-isearch-backward)
-         ([remap swiper] . counsel-grep-or-swiper)
-         ([remap swiper-backward] . counsel-grep-or-swiper-backward)
-         ([remap dired] . counsel-dired)
-         ([remap set-variable] . counsel-set-variable)
-         ([remap recentf-open-files] . counsel-recentf)
-         ([remap insert-char] . counsel-unicode-char)
-         ([remap command-history] . counsel-command-history))
-  :hook ((after-init . ivy-mode)
-         (ivy-mode . counsel-mode))
-  :init
-  (setq enable-recursive-minibuffers t) ; allow commands in minibuffers
-
-  (setq ivy-use-selectable-prompt t
-        ivy-use-virtual-buffers t    ; enable bookmarks and recentf
-        ivy-height 10
-        ivy-fixed-height-minibuffer t
-        ivy-count-format "(%d/%d) "
-        ivy-on-del-error-function nil
-        ivy-initial-inputs-alist nil)
-
-  (setq swiper-action-recenter t)
-
-  (setq counsel-find-file-at-point t
-        counsel-yank-pop-separator "\n────────\n")
-  :config
-  ;; enhance M-x
-  (use-package amx
-    :init (setq amx-history-length 20))
-
-  ;; better sorting and filtering
-  (use-package prescient
-    :commands prescient-persist-mode
-    :init
-    (setq prescient-filter-method '(literal regexp initialism fuzzy))
-    (prescient-persist-mode 1))
-
-  (use-package ivy-prescient
-    :commands ivy-prescient-re-builder
-    :custom-face
-    (ivy-minibuffer-match-face-1 ((t (:inherit font-lock-doc-face :foreground nil))))
-    :init
-    (defun ivy-prescient-non-fuzzy (str)
-      "Generate an Ivy-formatted non-fuzzy regexp list for the given STR.
-This is for use in `ivy-re-builders-alist'."
-      (let ((prescient-filter-method '(literal regexp)))
-        (ivy-prescient-re-builder str)))
-
-    (setq ivy-prescient-retain-classic-highlighting t
-          ivy-re-builders-alist
-          '((counsel-ag . ivy-prescient-non-fuzzy)
-            (counsel-rg . ivy-prescient-non-fuzzy)
-            (counsel-pt . ivy-prescient-non-fuzzy)
-            (counsel-grep . ivy-prescient-non-fuzzy)
-            (counsel-imenu . ivy-prescient-non-fuzzy)
-            (counsel-yank-pop . ivy-prescient-non-fuzzy)
-            (swiper . ivy-prescient-non-fuzzy)
-            (swiper-isearch . ivy-prescient-non-fuzzy)
-            (swiper-all . ivy-prescient-non-fuzzy)
-            (lsp-ivy-workspace-symbol . ivy-prescient-non-fuzzy)
-            (lsp-ivy-global-workspace-symbol . ivy-prescient-non-fuzzy)
-            (insert-char . ivy-prescient-non-fuzzy)
-            (counsel-unicode-char . ivy-prescient-non-fuzzy)
-            (t . ivy-prescient-re-builder))
-          ivy-prescient-sort-commands
-          '(:not swiper swiper-isearch ivy-switch-buffer
-                 counsel-grep counsel-git-grep counsel-ag counsel-imenu
-                 counsel-yank-pop counsel-recentf counsel-buffer-or-recentf))
-
-    (ivy-prescient-mode 1))
-
-  ;; correcting words with flyspell via Ivy
-  (use-package flyspell-correct-ivy
-    :after flyspell
-    :bind (:map flyspell-mode-map
-                ([remap flyspell-correct-word-before-point] . flyspell-correct-previous-word-generic)))
-
-  ;; Display world clock using Ivy
-  (use-package counsel-world-clock
-    :bind (:map counsel-mode-map
-                ("C-c c k" . counsel-world-clock)))
-
-  ;; Tramp ivy interface
-  (use-package counsel-tramp
-    :bind (:map counsel-mode-map
-                ("C-c c T" . counsel-tramp))))
-
-;; lsp supports
-(use-package lsp-ivy
-  :after lsp-mode
-  :bind (:map lsp-mode-map
-              ([remap xref-find-apropos] . lsp-ivy-workspace-symbol)
-              ("C-s-." . lsp-ivy-global-workspace-symbol)))
-
-;; More friendly display transformer for Ivy
-(use-package ivy-rich
+(use-package vertico
+  :straight (vertico :includes vertico-directory
+                     :files (:defaults "extensions/*.el"))
+  :bind (("C-c v" . vertico-repeat)
+         (:map vertico-map
+               ("M-RET" . minibuffer-force-complete-and-exit)))
   :custom
-  (ivy-display-style 'fancy)
-  :hook
-  ((ivy-mode . ivy-rich-mode)
-   (ivy-rich-mode . (lambda ()
-                      (setq ivy-virtual-abbreviate
-                            (or (and ivy-rich-mode 'abbreviate) 'name)))))
-  :init
-  ;; For better performance
-  (setq ivy-rich-parse-remote-buffer nil)
+  (vertico-cycle t)
+  (vertico-resize nil)
+  :init (vertico-mode))
 
-  ;; Setting tab size to 1, to insert tabs as delimiters
-  (add-hook 'minibuffer-setup-hook
-            (lambda ()
-              (setq tab-width 1))))
+(use-package orderless
+  :ensure t
+  :custom
+  (completion-styles '(substring orderless)))
+
+(use-package marginalia
+  :bind (("M-A" . marginalia-cycle)
+         :map minibuffer-local-map
+         ("M-A" . marginalia-cycle))
+  :init (marginalia-mode))
+
+(use-package affe
+  :after orderless
+  :config
+  ;; Configure Orderless
+  (setq affe-regexp-function #'orderless-pattern-compiler
+        affe-highlight-function #'orderless--highlight)
+
+  ;; Manual preview key for `affe-grep'
+  (consult-customize affe-grep :preview-key (kbd "M-.")))
+
+(use-package consult
+  :bind (;; C-c bindings (mode-specific-map)
+         ("C-c H" . consult-history)
+         ("C-c m" . consult-mode-command)
+         ([remap bookmark-jump] . consult-bookmark)
+         ("C-c k" . consult-kmacro)
+         ([remap recentf-open-files] . consult-recent-file)
+         ;; C-x bindings (ctl-x-map)
+         ([remap repeat-complex-command] . consult-complex-command)
+         ([remap switch-to-buffer] . consult-buffer)
+         ([remap switch-to-buffer-other-window] . consult-buffer-other-window)
+         ([remap switch-to-buffer-other-frame] . consult-buffer-other-frame)
+         ;; Custom M-# bindings for fast register access
+         ("M-#" . consult-register-load)
+         ([remap abbrev-prefix-mark] . consult-register-store)
+         ("C-M-#" . consult-register)
+         ;; Other custom bindings
+         ([remap yank-pop] . consult-yank-pop)
+         ([remap apropos-command] . consult-apropos)
+         ;; M-g bindings (goto-map)
+         ("M-g e" . consult-compile-error)
+         ([remap flycheck-list-errors] . consult-flycheck)
+         ([remap goto-line] . consult-goto-line)             ;; orig. goto-line
+         ([remap imenu] . consult-outline)
+         ("M-g m" . consult-mark)
+         ("M-g k" . consult-global-mark)
+         ("M-g I" . consult-imenu-multi)
+         ;; M-s bindings (search-map)
+         ([remap project-find-file] . consult-find)
+         ([remap locate] . consult-locate)
+         ("M-s g" . consult-grep)
+         ("M-s G" . consult-git-grep)
+         ([remap project-find-regexp] . consult-ripgrep)
+         ([remap isearch-forward] . consult-line)
+         ("M-s L" . consult-line-multi)
+         ("M-s m" . consult-multi-occur)
+         ("M-s k" . consult-keep-lines)
+         ("M-s u" . consult-focus-lines)
+         ;; Isearch integration
+         ("M-s e" . consult-isearch)
+         :map isearch-mode-map
+         ([remap isearch-edit-string] . consult-isearch)
+         ("M-s l" . consult-line)                  ;; needed by consult-line to detect isearch
+         ("M-s L" . consult-line-multi))           ;; needed by consult-line to detect isearch
+
+  ;; Enable automatic preview at point in the *Completions* buffer.
+  ;; This is relevant when you use the default completion UI,
+  ;; and not necessary for Vertico, Selectrum, etc.
+  :hook (completion-list-mode . consult-preview-at-point-mode)
+
+  :init
+  ;; Optionally configure the register formatting. This improves the register
+  ;; preview for `consult-register', `consult-register-load',
+  ;; `consult-register-store' and the Emacs built-ins.
+  (setq register-preview-delay 0
+        register-preview-function #'consult-register-format)
+
+  ;; Optionally tweak the register preview window.
+  ;; This adds thin lines, sorting and hides the mode line of the window.
+  (advice-add #'register-preview :override #'consult-register-window)
+
+  ;; Optionally replace `completing-read-multiple' with an enhanced version.
+  (advice-add #'completing-read-multiple :override #'consult-completing-read-multiple)
+
+  ;; Use Consult to select xref locations with preview
+  (setq xref-show-xrefs-function #'consult-xref
+        xref-show-definitions-function #'consult-xref)
+
+  :config
+  (consult-customize
+   consult-theme
+   :preview-key '(:debounce 0.2 any)
+   consult-ripgrep consult-git-grep consult-grep
+   consult-bookmark consult-recent-file consult-xref
+   consult--source-file consult--source-project-file consult--source-bookmark
+   :preview-key (kbd "M-."))
+
+  ;; Optionally configure the narrowing key.
+  ;; Both < and C-+ work reasonably well.
+  (setq consult-narrow-key "<") ;; (kbd "C-+")
+
+  ;; Optionally make narrowing help available in the minibuffer.
+  ;; You may want to use `embark-prefix-help-command' or which-key instead.
+  ;; (define-key consult-narrow-map (vconcat consult-narrow-key "?") #'consult-narrow-help)
+
+  ;; Optionally configure a function which returns the project root directory.
+  ;; There are multiple reasonable alternatives to chose from.
+  (setq consult-project-root-function
+        (lambda ()
+          (when-let (project (project-current))
+            (car (project-roots project))))))
+
+(use-package embark
+  :ensure t
+  :bind
+  (("C-c e" . embark-act)
+   ("C-;" . embark-dwim)
+   ("C-h B" . embark-bindings))
+  :init
+  ;; Optionally replace the key help with a completing-read interface
+  (setq prefix-help-command #'embark-prefix-help-command)
+  :config
+  ;; Hide the mode line of the Embark live/completions buffers
+  (add-to-list 'display-buffer-alist
+               '("\\`\\*Embark Collect \\(Live\\|Completions\\)\\*"
+                 nil
+                 (window-parameters (mode-line-format . none)))))
+
+;; Consult users will also want the embark-consult package.
+(use-package embark-consult
+  :ensure t
+  :after (embark consult)
+  :demand t
+  :hook
+  (embark-collect-mode . consult-preview-at-point-mode))
+
+;; other consult utilities
+(use-package consult-flycheck
+  :after (consult))
+
+(use-package consult-lsp
+  :after (consult lsp-mode)
+  :bind (:map lsp-mode-map
+              ([remap xref-find-apropos] . consult-lsp-symbols)))
+
+(use-package xref
+  :ensure nil
+  :unless (>= emacs-major-version 28)
+  :custom
+  (xref-show-xrefs-function #'xref-show-definitions-buffer-at-bottom)
+  (xref-show-definitions-function #'xref-show-definitions-buffer-at-bottom))
 
 (provide 'init-search)
 ;;; init-search.el ends here

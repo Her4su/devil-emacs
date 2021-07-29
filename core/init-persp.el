@@ -5,7 +5,6 @@
 ;;; Code:
 (use-package persp-mode
   :diminish
-  :defines (recentf-exclude ivy-ignore-buffers ivy-sort-functions-alist)
   :commands (get-current-persp persp-contain-buffer-p)
   :hook ((after-init . persp-mode))
   :init
@@ -32,17 +31,7 @@
 
   ;; Don't save persp configs in `recentf'
   (with-eval-after-load 'recentf
-    (push persp-save-dir recentf-exclude))
-
-  ;; Ivy Integraticon
-  (with-eval-after-load 'ivy
-    (add-to-list 'ivy-ignore-buffers
-                 #'(lambda (b)
-                     (when persp-mode
-                       (let ((persp (get-current-persp)))
-                         (if persp
-                             (not (persp-contain-buffer-p b persp))
-                           nil)))))))
+    (push persp-save-dir recentf-exclude)))
 
 (provide 'init-persp)
 ;;; init-persp.el ends here

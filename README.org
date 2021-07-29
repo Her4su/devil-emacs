@@ -12,7 +12,7 @@
      + =esehll/shell=: shell settings
      + =evil=: modal editing with meow
      + =highlight=: highlight content such as paren and lines
-     + =ivy=: configuration of fuzzy matching framework Ivy
+     + =search=: configuration of fuzzy matching framework
      + =lsp=: language server and auto-complete settings
      + =note=: noting by org mode or markdown
      + =ui=: the UI of Emacs like themes

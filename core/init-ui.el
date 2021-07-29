@@ -108,12 +108,11 @@
     "Recenter and pulse the current line."
     (recenter)
     (pulse-line))
-  :hook ((counsel-grep-post-action
-          dumb-jump-after-jump
+  :hook ((dumb-jump-after-jump
           bookmark-after-jump
           imenu-after-jump
-          goto-line-preview
-          goto-char-preview
+          goto-line
+          goto-char
           pop-to-mark-command
           pop-global-mark
           goto-last-change) . recenter-and-pulse)
