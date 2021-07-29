@@ -5,14 +5,14 @@
 
 ;;; Code:
 (setq
- sevil-scheme '(guile)
- sevil-font-name "JetBrains Mono" ; default font
- sevil-font-size "10" ; font size
- sevil-use-linum nil ; show line number in side bar
- sevil-use-which-key t ; show key hints
- sevil-use-evil t ; use evil
- sevil-lisp-compiler "sbcl"
- sevil-language-list ; the langauges you want to enable
+ my-scheme '(guile)
+ my-font-name "JetBrains Mono" ; default font
+ my-font-size "10" ; font size
+ my-use-linum nil ; show line number in side bar
+ my-use-which-key t ; show key hints
+ my-use-evil t ; use evil
+ my-lisp-compiler "sbcl"
+ my-language-list ; the langauges you want to enable
  '(agda clisp coq cpp julia haskell idris latex ocaml racket rust erlang))
 
 (setq debug-on-error nil)

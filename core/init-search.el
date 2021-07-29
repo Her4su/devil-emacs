@@ -1,4 +1,4 @@
-;;; init-ivy.el --- ivy configuration
+;;; init-search.el --- ivy configuration
 ;;; Commentary:
 ;; ivy fuzzy complement framework
 ;; thiner but powerful enough
@@ -152,5 +152,5 @@ This is for use in `ivy-re-builders-alist'."
             (lambda ()
               (setq tab-width 1))))
 
-(provide 'init-ivy)
-;;; init-ivy.el ends here
+(provide 'init-search)
+;;; init-search.el ends here

@@ -90,7 +90,7 @@
   (lsp-prefer-capf t)
   (lsp-keymap-prefix "C-;")
   :init
-  (when sevil-use-which-key
+  (when my-use-which-key
     (with-eval-after-load 'lsp-mode
       (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration))))
 

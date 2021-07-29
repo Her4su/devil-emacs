@@ -4,41 +4,41 @@
 
 ;;; Code:
 ;; customized constants
-(defgroup sevil-setting nil
+(defgroup my-setting nil
   "My Emacs config setting"
   :group 'convenience)
 
-(defcustom sevil-scheme '(chez)
+(defcustom my-scheme '(chez)
   "Scheme default implementation."
   :type '(symbol list)
-  :group 'sevil-setting)
+  :group 'my-setting)
 
-(defcustom sevil-font-name "Fira Code"
+(defcustom my-font-name "Fira Code"
   "My font name."
   :type '(string)
-  :group 'sevil-setting)
+  :group 'my-setting)
 
-(defcustom sevil-font-size "13"
+(defcustom my-font-size "13"
   "My font size."
-  :group 'sevil-setting
+  :group 'my-setting
   :type '(integer))
 
-(defcustom sevil-use-linum nil
+(defcustom my-use-linum nil
   "Show line number."
-  :group 'sevil-setting
+  :group 'my-setting
   :type '(boolean))
 
-(defcustom sevil-use-evil nil
+(defcustom my-use-evil nil
   "Use evil by default"
-  :group 'sevil-setting
+  :group 'my-setting
   :type '(boolean))
 
-(defcustom sevil-use-which-key t
+(defcustom my-use-which-key t
   "Show key hints."
-  :group 'sevil-setting
+  :group 'my-setting
   :type '(boolean))
 
-(defcustom sevil-language-list
+(defcustom my-language-list
   '(clisp
     coq
     cpp
@@ -50,17 +50,17 @@
     racket
     rust)
   "The list of languages tocustom-file."
-  :group 'sevil-setting
+  :group 'my-setting
   :type '(list symbol))
 
-(defcustom sevil-swap-colon t
+(defcustom my-swap-colon t
   "Swap ; and : usage."
-  :group 'sevil-setting
+  :group 'my-setting
   :type '(boolean))
 
-(defcustom sevil-lisp-compiler "sbcl"
+(defcustom my-lisp-compiler "sbcl"
   "Define Lisp Implementation."
-  :group 'sevil-setting
+  :group 'my-setting
   :type '(string))
 
 ;; helper constants
@@ -92,9 +92,9 @@
   (>= emacs-major-version 27)
   "Emacs is 27 or above.")
 
-(defmacro sevil-load-lang (lang)
+(defmacro my-load-lang (lang)
   "Load a LANG when it's in language list."
-  (when (member lang sevil-language-list)
+  (when (member lang my-language-list)
     (let ((lang-file
            (intern
             (concat "init-" (symbol-name lang)))))
@@ -111,16 +111,16 @@
         (dependencies (rest list)))
     (seq-remove (lambda (e) (executable-find e)) dependencies)))
 
-(defun sevil-update-all ()
+(defun my-update-all ()
   "Update all the pacakges."
   (interactive
    (progn
      (straight-pull-all)
      (straight-rebuild-all))))
 
-(defun sevil/font-info ()
+(defun my/font-info ()
   "Get the current font name with size."
-  (concat sevil-font-name " " sevil-font-size))
+  (concat my-font-name " " my-font-size))
 
 ;; load custom file
 (setq custom-file

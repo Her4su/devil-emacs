@@ -6,7 +6,7 @@
 (require 'init-const)
 
 ;; it's not idiomatic to map ctrl-c...
-(when sevil-use-evil
+(when my-use-evil
   (use-package evil
     :hook
     (after-init . evil-mode)

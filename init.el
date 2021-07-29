@@ -69,7 +69,7 @@
 ;;; better editing
 (require 'init-hydra)
 (require 'init-edit)
-(require 'init-ivy)
+(require 'init-search)
 (require 'init-persp)
 
 ;;; better UI
@@ -86,16 +86,16 @@
 (require 'init-evil)
 
 ;;; programming languages environment
-(sevil-load-lang cpp)
-(sevil-load-lang agda)
-(sevil-load-lang coq)
-(sevil-load-lang ocaml)
-(sevil-load-lang racket)
-(sevil-load-lang clisp)
-(sevil-load-lang idris)
-(sevil-load-lang rust)
-(sevil-load-lang haskell)
-(sevil-load-lang latex)
-(sevil-load-lang erlang)
-(sevil-load-lang julia)
+(my-load-lang cpp)
+(my-load-lang agda)
+(my-load-lang coq)
+(my-load-lang ocaml)
+(my-load-lang racket)
+(my-load-lang clisp)
+(my-load-lang idris)
+(my-load-lang rust)
+(my-load-lang haskell)
+(my-load-lang latex)
+(my-load-lang erlang)
+(my-load-lang julia)
 ;;; init.el ends here

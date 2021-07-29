@@ -13,7 +13,7 @@
 
 (use-package sly
   :custom
-  (inferior-lisp-program sevil-lisp-compiler)
+  (inferior-lisp-program my-lisp-compiler)
   :init
   (setq sly-complete-symbol*-fancy t)
   (setq sly-contribs '(sly-fancy

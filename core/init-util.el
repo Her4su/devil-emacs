@@ -199,7 +199,7 @@
                  (cons tramp-file-name-regexp backup-dir))))
 
 ;; Tips for next keystroke
-(when sevil-use-which-key
+(when my-use-which-key
   (use-package which-key
     :hook (after-init . which-key-mode)
     :custom

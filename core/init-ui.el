@@ -9,8 +9,8 @@
 (require 'init-const)
 
 ;; check if selected font is installed
-(when (font-installed-p (sevil/font-info))
-  (set-frame-font (sevil/font-info) nil t))
+(when (font-installed-p (my/font-info))
+  (set-frame-font (my/font-info) nil t))
 
 ;; title
 (setq frame-title-format '("|- %b")
@@ -120,6 +120,25 @@
   :custom-face
   (pulse-highlight-start-face ((t (:inherit highlight))))
   (pulse-highlight-face ((t (:inherit highlight)))))
+
+(use-package ligature
+  :straight (ligature :type git :host github :repo "mickeynp/ligature.el")
+  :config
+  (ligature-set-ligatures
+   'prog-mode '("|||>" "<|||" "<==>" "<!--" "####" "~~>" "***" "||=" "||>"
+                ":::" "::=" "=:=" "===" "==>" "=!=" "=>>" "=<<" "=/=" "!=="
+                "!!." ">=>" ">>=" ">>>" ">>-" ">->" "->>" "-->" "---" "-<<"
+                "<~~" "<~>" "<*>" "<||" "<|>" "<$>" "<==" "<=>" "<=<" "<->"
+                "<--" "<-<" "<<=" "<<-" "<<<" "<+>" "</>" "###" "#_(" "..<"
+                "..." "+++" "/==" "///" "_|_" "www" "&&" "^=" "~~" "~@" "~="
+                "~>" "~-" "**" "*>" "*/" "||" "|}" "|]" "|=" "|>" "|-" "{|"
+                "[|" "]#" "::" ":=" ":>" ":<" "$>" "==" "=>" "!=" "!!" ">:"
+                ">=" ">>" ">-" "-~" "-|" "->" "--" "-<" "<~" "<*" "<|" "<:"
+                "<$" "<=" "<>" "<-" "<<" "<+" "</" "#{" "#[" "#:" "#=" "#!"
+                "##" "#(" "#?" "#_" "%%" ".=" ".-" ".." ".?" "+>" "++" "?:"
+                "?=" "?." "??" ";;" "/*" "/=" "/>" "//" "__" "~~" "(*" "*)"
+                "\\\\" "://"))
+  (global-ligature-mode t))
 
 (provide 'init-ui)
 ;;; init-ui.el ends here
