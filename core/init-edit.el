@@ -97,11 +97,12 @@
             gnus-article-mode-map
             ert-results-mode-map))
 
-;; Show number of matches in mode-line while searching
+;; Highlight replace target
 (use-package anzu
   :diminish
   :bind (([remap query-replace] . anzu-query-replace)
          ([remap query-replace-regexp] . anzu-query-replace-regexp)
+         ([remap replace-regexp] . anzu-query-replace-regexp)
          ("M-s r" . anzu-query-replace)
          ("M-s s" . anzu-query-replace-regexp)
          :map isearch-mode-map

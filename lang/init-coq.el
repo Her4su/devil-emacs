@@ -16,7 +16,10 @@
   :custom
   (proof-splash-enable nil)
   (proof-three-window-enable t)
-  (coq-project-filename "_CoqProject"))
+  (coq-project-filename "_CoqProject")
+  :init
+  (when (bound-and-true-p meow-mode)
+    (setq meow-mode-state-list (push '(coq-mode . normal) meow-mode-state-list))))
 
 (use-package company-coq
   :hook (coq-mode . company-coq-mode)

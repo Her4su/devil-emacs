@@ -63,6 +63,7 @@
          ("M-g m" . consult-mark)
          ("M-g k" . consult-global-mark)
          ("C-c ," . consult-imenu-multi)
+         ("C-."   . xref-find-references)
          ;; M-s bindings (search-map)
          ([remap project-find-file] . consult-find)
          ([remap locate] . consult-locate)

@@ -70,8 +70,8 @@
 (require 'init-hydra)
 (require 'init-edit)
 (require 'init-search)
-(require 'init-evil)
-(require 'init-persp)
+(require 'init-modal)
+(require 'init-workspace)
 
 ;;; better UI
 (require 'init-ui)
