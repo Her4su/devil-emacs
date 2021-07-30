@@ -9,8 +9,7 @@
   :diminish
   :defines (company-dabbrev-ignore-case company-dabbrev-downcase)
   :commands company-abort
-  :bind (("M-/" . company-complete-selection)
-         ("<backtab>" . company-yasnippet)
+  :bind (("M-/" . company-yasnippet)
          :map company-active-map
          ("C-p" . company-select-previous)
          ("C-n" . company-select-next)

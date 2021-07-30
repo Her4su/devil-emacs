@@ -12,6 +12,7 @@
  my-use-which-key t ; show key hints
  my-use-evil t ; use evil
  my-lisp-compiler "sbcl"
+ my-ui-theme 'doom-one-light
  my-language-list ; the langauges you want to enable
  '(agda clisp coq cpp julia haskell idris latex ocaml racket rust erlang))
 

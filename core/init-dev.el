@@ -9,7 +9,8 @@
 (use-package compile
   :ensure nil
   :bind (("C-c c c" . compile)
-         ("C-c c r" . recompile))
+         ("C-c c r" . recompile)
+         ("C-c c e" . compile-goto-error))
   :custom
   (compilation-scroll-output t))
 
@@ -43,8 +44,8 @@
 
 ;; project managemnt
 (use-package project
-  :config
-  (define-key ctl-x-map "p" project-prefix-map))
+  :ensure nil
+  :config (define-key ctl-x-map "p" project-prefix-map))
  
 ;; use ripgrep to power up search speed
 (use-package ripgrep

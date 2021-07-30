@@ -18,6 +18,11 @@
   :type '(string)
   :group 'my-setting)
 
+(defcustom my-ui-theme 'doom-one-light
+  "My font name."
+  :type '(symbol)
+  :group 'my-setting)
+
 (defcustom my-font-size "13"
   "My font size."
   :group 'my-setting
@@ -28,8 +33,8 @@
   :group 'my-setting
   :type '(boolean))
 
-(defcustom my-use-evil nil
-  "Use evil by default"
+(defcustom my-use-evil t
+  "Use evil by default."
   :group 'my-setting
   :type '(boolean))
 
@@ -46,17 +51,13 @@
     idris
     latex
     ocaml
+    julia
     python
     racket
     rust)
-  "The list of languages tocustom-file."
+  "The list of languages to custom file."
   :group 'my-setting
   :type '(list symbol))
-
-(defcustom my-swap-colon t
-  "Swap ; and : usage."
-  :group 'my-setting
-  :type '(boolean))
 
 (defcustom my-lisp-compiler "sbcl"
   "Define Lisp Implementation."
@@ -76,17 +77,9 @@
   (and (display-graphic-p) sys/macp)
   "Are we running under X on a Mac system?")
 
-(defconst sys/mac-cocoa-p
-  (featurep 'cocoa)
-  "Are we running with Cocoa on a Mac system?")
-
 (defconst sys/linux-x-p
   (and (display-graphic-p) sys/linuxp)
   "Are we running under X on a GNU/Linux system?")
-
-(defconst sys/rootp
-  (string-equal "root" (getenv "USER"))
-  "Are you using ROOT user?")
 
 (defconst emacs/>=27p
   (>= emacs-major-version 27)

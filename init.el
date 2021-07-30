@@ -70,6 +70,7 @@
 (require 'init-hydra)
 (require 'init-edit)
 (require 'init-search)
+(require 'init-evil)
 (require 'init-persp)
 
 ;;; better UI
@@ -83,7 +84,6 @@
 (require 'init-dev)
 (require 'init-prog)
 (require 'init-util)
-(require 'init-evil)
 
 ;;; programming languages environment
 (my-load-lang cpp)

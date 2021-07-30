@@ -74,7 +74,7 @@
   :ensure nil
   :straight nil
   :bind
-  (("C-c c l" . comment-line)
+  (("C-c ;" . comment-line)
    ("C-c c d" . comment-dwim)
    ("C-c c k" . comment-kill)
    ("C-c c b" . comment-box))
@@ -162,7 +162,7 @@
 
 ;; Framework for mode-specific buffer indexes
 (use-package imenu
-  :bind (("C-." . imenu))
+  :bind (("C-," . imenu))
   :ensure nil)
 
 ;; Undo/Redo

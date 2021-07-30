@@ -213,9 +213,10 @@
       "t" '("treemacs")
       "<tab>" '("indent"))
     (which-key-add-key-based-replacements
-      "C-c @" "hs"
+      "C-c @" "hide"
       "C-c v" "magic"
-      "C-c p" "persp"
+      "C-c p" "workspace"
+      "C-c h" "hydra"
       "C-c f" "check"
       "C-c c" "code")))
 

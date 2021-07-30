@@ -18,7 +18,7 @@
 (use-package orderless
   :ensure t
   :custom
-  (completion-styles '(substring orderless)))
+  (completion-styles '(orderless)))
 
 (use-package marginalia
   :bind (("M-A" . marginalia-cycle)
@@ -56,13 +56,13 @@
          ([remap yank-pop] . consult-yank-pop)
          ([remap apropos-command] . consult-apropos)
          ;; M-g bindings (goto-map)
-         ("M-g e" . consult-compile-error)
+         ([remap compile-goto-error] . consult-compile-error)
          ([remap flycheck-list-errors] . consult-flycheck)
          ([remap goto-line] . consult-goto-line)             ;; orig. goto-line
          ([remap imenu] . consult-outline)
          ("M-g m" . consult-mark)
          ("M-g k" . consult-global-mark)
-         ("M-g I" . consult-imenu-multi)
+         ("C-c ," . consult-imenu-multi)
          ;; M-s bindings (search-map)
          ([remap project-find-file] . consult-find)
          ([remap locate] . consult-locate)
@@ -114,8 +114,7 @@
    :preview-key (kbd "M-."))
 
   ;; Optionally configure the narrowing key.
-  ;; Both < and C-+ work reasonably well.
-  (setq consult-narrow-key "<") ;; (kbd "C-+")
+  (setq consult-narrow-key "<")
 
   ;; Optionally make narrowing help available in the minibuffer.
   ;; You may want to use `embark-prefix-help-command' or which-key instead.
@@ -154,19 +153,12 @@
 
 ;; other consult utilities
 (use-package consult-flycheck
-  :after (consult))
+  :after (consult flycheck))
 
 (use-package consult-lsp
   :after (consult lsp-mode)
   :bind (:map lsp-mode-map
               ([remap xref-find-apropos] . consult-lsp-symbols)))
-
-(use-package xref
-  :ensure nil
-  :unless (>= emacs-major-version 28)
-  :custom
-  (xref-show-xrefs-function #'xref-show-definitions-buffer-at-bottom)
-  (xref-show-definitions-function #'xref-show-definitions-buffer-at-bottom))
 
 (provide 'init-search)
 ;;; init-search.el ends here
