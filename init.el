@@ -67,7 +67,6 @@
 (require 'init-boot)
 
 ;;; better editing
-(require 'init-hydra)
 (require 'init-edit)
 (require 'init-search)
 (require 'init-modal)

@@ -57,7 +57,7 @@
          ([remap apropos-command] . consult-apropos)
          ;; M-g bindings (goto-map)
          ([remap compile-goto-error] . consult-compile-error)
-         ([remap flycheck-list-errors] . consult-flycheck)
+         ([remap flymake-show-diagnostics-buffer] . consult-flymake)
          ([remap goto-line] . consult-goto-line)             ;; orig. goto-line
          ([remap imenu] . consult-outline)
          ("M-g m" . consult-mark)
@@ -151,15 +151,6 @@
   :demand t
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
-
-;; other consult utilities
-(use-package consult-flycheck
-  :after (consult flycheck))
-
-(use-package consult-lsp
-  :after (consult lsp-mode)
-  :bind (:map lsp-mode-map
-              ([remap xref-find-apropos] . consult-lsp-symbols)))
 
 (provide 'init-search)
 ;;; init-search.el ends here

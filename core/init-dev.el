@@ -45,39 +45,23 @@
 ;; project managemnt
 (use-package project
   :ensure nil
-  :config (define-key ctl-x-map "p" project-prefix-map))
+  :init
+  (define-key ctl-x-map "p" project-prefix-map))
  
 ;; use ripgrep to power up search speed
 (use-package ripgrep
   :defer t)
 
 ;; syntax checking
-(use-package flycheck
+(use-package flymake
   :diminish
-  :hook (after-init . global-flycheck-mode)
-  :bind (("C-c !" . flycheck-list-errors))
-  :custom
-  (flycheck-emacs-lisp-load-path 'inherit)
-  (flycheck-check-syntax-automatically '(save mode-enabled))
-  (flycheck-indication-mode 'right-fringe)
-  (flycheck-temp-prefix ".flycheck")
-  (flycheck-keymap-prefix (kbd "C-c f"))
-  :config
-  (use-package flycheck-pos-tip
-    :hook
-    (flycheck-mode . flycheck-pos-tip-mode))
-  (use-package flycheck-color-mode-line
-    :hook
-    (flycheck-mode . flycheck-color-mode-line-mode))
-  (use-package flycheck-rust
-    :hook
-    (rust-mode . flycheck-rust-setup))
-  (use-package flycheck-ocaml
-    :hook
-    (tuareg-mode . flycheck-ocaml-setup))
-  (use-package flycheck-haskell
-    :hook
-    (haskell-mode . flycheck-haskell-setup)))
+  :hook
+  (prog-mode . flymake-mode)
+  (text-mode . flymake-mode)
+  :bind (("C-c !" . flymake-show-diagnostics-buffer)
+         ("C-c f l" . flymake-show-diagnostics-buffer)
+         ("C-c f p" . flymake-goto-prev-error)
+         ("C-c f n" . flymake-goto-next-error)))
 
 ;; docker
 (use-package dockerfile-mode)

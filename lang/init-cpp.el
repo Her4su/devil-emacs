@@ -7,7 +7,7 @@
 ;; C/C++ Mode
 (use-package cc-mode
   :ensure nil
-  :hook ((c-mode c++-mode) . lsp-deferred)
+  :hook ((c-mode c++-mode) . eglot-ensure)
   :init (setq-default c-basic-offset 4)
   :config
   (use-package modern-cpp-font-lock

@@ -97,29 +97,6 @@
          (magit-post-refresh . diff-hl-magit-post-refresh)
          (dired-mode         . diff-hl-dired-mode-unless-remote)))
 
-;; pulse current line
-(use-package pulse
-  :ensure nil
-  :preface
-  (defun pulse-line (&rest _)
-    "Pulse the current line."
-    (pulse-momentary-highlight-one-line (point)))
-  (defun recenter-and-pulse (&rest _)
-    "Recenter and pulse the current line."
-    (recenter)
-    (pulse-line))
-  :hook ((dumb-jump-after-jump
-          bookmark-after-jump
-          imenu-after-jump
-          goto-line
-          goto-char
-          pop-to-mark-command
-          pop-global-mark
-          goto-last-change) . recenter-and-pulse)
-  :custom-face
-  (pulse-highlight-start-face ((t (:inherit highlight))))
-  (pulse-highlight-face ((t (:inherit highlight)))))
-
 (use-package ligature
   :straight (ligature :type git :host github :repo "mickeynp/ligature.el")
   :config

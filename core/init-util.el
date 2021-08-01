@@ -80,10 +80,6 @@
     ;; show directory first
     (setq dired-listing-switches "-alh --group-directories-first")
 
-    ;; quick sort dired buffers via hydra
-    (use-package dired-quick-sort
-      :bind (:map dired-mode-map)))
-
   ;; show git info in dired
   (use-package dired-git-info
     :bind (:map dired-mode-map
@@ -109,7 +105,7 @@
     (dired-omit-files (rx (or ".git" ".svn"
                               ".cache"
                               ".ccls-cache" ".clangd"
-                              ".elc" ".pyc" ".o" ".swp")))))
+                              ".elc" ".pyc" ".o" ".swp"))))))
 
 ;; `find-dired' alternative using `fd'
 (when (executable-find "fd")
@@ -216,7 +212,6 @@
       "C-c @" "hide"
       "C-c v" "magic"
       "C-c p" "workspace"
-      "C-c h" "hydra"
       "C-c f" "check"
       "C-c c" "code")))
 

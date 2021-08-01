@@ -46,29 +46,7 @@
                 avy-style 'pre))
 
 (use-package rect
-  :straight nil
-  :after (hydra)
-  :bind (("C-c t" . hydra-rect/body))
-  :config
-  (defhydra hydra-rect ()
-    "rectangle"
-    ("h" backward-char "←")
-    ("j" next-line "↓")
-    ("k" previous-line "↑")
-    ("l" forward-char "→")
-    ("w" copy-rectangle-as-kill "copy")
-    ("y" yank-rectangle "yank")
-    ("t" string-rectangle "string")
-    ("d" kill-rectangle "kill")
-    ("c" clear-rectangle "clear")
-    ("o" open-rectangle "open")
-    ("N" rectangle-number-lines "number lines")
-    ("e" rectangle-exchange-point-and-mark "exchange")
-    ("u" undo "undo")
-    ("r" (if (region-active-p)
-             (deactivate-mark)
-           (rectangle-mark-mode 1))
-     "reset")))
+  :straight nil)
 
 (use-package newcomment
   :ensure nil
@@ -126,27 +104,11 @@
   :hook (after-init . electric-pair-mode)
   :init (setq electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit))
 
-(defhydra hydra-spell ()
-  ("h" backward-char "←")
-  ("j" next-line "↓")
-  ("k" previous-line "↑")
-  ("l" forward-char "→")
-  ("V" scroll-up "up")
-  ("v" scroll-down "down")
-  ("a" flyspell-auto-correct-word)
-  ("b" flyspell-buffer "buffer")
-  ("r" flyspell-region "region")
-  ("n" flyspell-correct-next "next")
-  ("p" flyspell-correct-previous "previous")
-  ("." flyspell-correct-at-point "here")
-  ("m" flyspell-correct-move "move"))
-
 ;; On-the-fly spell checker
 (use-package flyspell
   :ensure nil
   :diminish
-  :bind (("C-c s" . hydra-spell/body)
-         ("C-c ." . flyspell-correct-at-point))
+  :bind (("C-c ." . flyspell-correct-at-point))
   :hook (((text-mode outline-mode) . flyspell-mode)
          ;; (prog-mode . flyspell-prog-mode)
          (flyspell-mode . (lambda ()

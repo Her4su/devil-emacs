@@ -51,15 +51,10 @@
    company-dabbrev-downcase nil
    company-global-modes '(not
                           erc-mode message-mode help-mode
-                          gud-mode eshell-mode shell-mode
-                          company-backends '(company-capf company-files)
-                          company-frontends '(company-pseudo-tooltip-frontend
-                                              company-echo-metadata-frontend))))
-
-;; Better sorting and filtering
-(use-package company-prescient
-  :hook ((global-company-mode . company-prescient-mode)
-         (global-company-mode . prescient-persist-mode)))
+                          gud-mode eshell-mode shell-mode)
+   company-backends '(company-capf company-files)
+   company-frontends '(company-pseudo-tooltip-frontend
+                       company-echo-metadata-frontend)))
 
 (use-package company-quickhelp
   :after company
@@ -73,38 +68,11 @@
   :config
   (use-package yasnippet-snippets))
 
-(use-package lsp-mode
-  :hook
-  (lsp-mode . lsp-ui-mode)
-  :commands lsp
-  :custom
-  (lsp-enable-folding nil) ;; use hideshow
-  (lsp-enable-text-document-color nil)
-  (lsp-log-io nil)
-  (lsp-enable-indentation nil)
-  (lsp-enable-links nil)
-  (lsp-prefer-capf t)
-  (lsp-keymap-prefix "C-;")
-  :init
-  (when my-use-which-key
-    (with-eval-after-load 'lsp-mode
-      (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration))))
-
-(use-package lsp-ui
-  :commands (lsp-ui-mode lsp-ui-peek-find-definistions lsp-ui-peek-find-references)
-  :bind (:map lsp-ui-mode-map
-              ([remap xref-find-definitions] . lsp-ui-peek-find-definitions)
-              ([remap xref-find-references] . lsp-ui-peek-find-references))
-  :hook (lsp-mode . lsp-ui-mode))
-
-(use-package lsp-treemacs :commands lsp-treemacs-errors-list)
-
-(use-package dap-mode
-  :diminish
-  :hook ((dap-stopped . (dap-hydra)))
-  :after (lsp hydra)
-  :hook ((python-mode . (lambda () (require 'dap-python)))
-         ((c-mode c++-mode objc-mode swift) . (lambda () (require 'dap-lldb)))))
+(use-package eglot
+  :bind (("C-c =" . eglot-format)
+         ("C-c -" . eglot-rename)
+         ("C-c 0" . eglot-code-actions)
+         ("C-c h" . egdoc)))
 
 (provide 'init-prog)
 ;;; init-prog.el ends here

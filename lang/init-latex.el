@@ -9,7 +9,7 @@
   :defer t
   :hook
   ((LaTeX-mode . visual-line-mode)
-   (LaTeX-mode . flycheck-mode)
+   (LaTeX-mode . flymake-mode)
    (LaTeX-mode . LaTeX-math-mode)
    (LaTeX-mode . company-mode))
   :custom

@@ -7,7 +7,7 @@
 (use-package haskell-mode
   :hook
   ((haskell-mode . haskell-indentation-mode)
-   (haskell-mode . lsp-deferred))
+   (haskell-mode . eglot-ensure))
   :init
   (unless (fboundp 'align-rules-list)
     (defvar align-rules-list nil))
@@ -43,12 +43,6 @@
   (haskell-process-suggest-hoogle-imports       t)
   (haskell-tags-on-save                         t)
   (inhibit-startup-screen                       t))
-
-(use-package lsp-haskell
-  :hook (haskell-mode . lsp)
-  :after (lsp haskell-mode)
-  :custom
-  (lsp-haskell-process-path-hie "haskell-language-server-wrapper"))
 
 (provide 'init-haskell)
 ;;; init-haskell ends here

@@ -6,7 +6,7 @@
 ;; OCaml
 (use-package tuareg
   :mode ("\\.ml[4ilpy]?$" . tuareg-mode)
-  :hook (tuareg-mode . lsp-deferred))
+  :hook (tuareg-mode . eglot-ensure))
 (use-package dune :after tuareg)
 (use-package utop
   :after tuareg
