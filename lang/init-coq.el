@@ -24,7 +24,7 @@
 (use-package company-coq
   :hook (coq-mode . company-coq-mode)
   :custom
-  (company-coq-features/prettify-symbols-in-terminals nil))
+  (company-coq-features/prettify-symbols-in-terminals t))
 
 (provide 'init-coq)
 ;;; init-coq ends here

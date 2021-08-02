@@ -177,6 +177,9 @@
 
 (use-package paredit)
 
+(use-package vundo
+  :straight (vundo :type git :host github :repo "casouri/vundo"))
+
 (use-package dumb-jump
   :ensure t
   :init

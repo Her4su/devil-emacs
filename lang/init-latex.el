@@ -14,7 +14,7 @@
    (LaTeX-mode . company-mode))
   :custom
   (preview-scale-function (quote preview-scale-from-face))
-  (preview-scale-function 3)
+  (preview-scale-function 1)
   :config
   (setq TeX-auto-save t
         TeX-parse-self t

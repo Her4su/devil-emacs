@@ -59,7 +59,8 @@
    ;; misc
    '("zr" . counsel-recentf)
    '("zs" . eshell)
-   '("zt" . treemacs))
+   '("zt" . treemacs)
+   '("zw" . writeroom-mode))
   
   (meow-normal-define-key
    '("0" . meow-expand-0)
@@ -156,6 +157,8 @@
 
 (use-package meow
   :demand t
+  :custom
+  (meow-use-clipboard t)
   :init
   (meow-global-mode 1)
   :config

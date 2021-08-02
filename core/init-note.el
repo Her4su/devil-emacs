@@ -40,5 +40,9 @@
   :ensure t
   :bind ("C-x x n" . literate-calc-eval-buffer))
 
+(use-package writeroom-mode
+  :bind ("C-c ~" . writeroom-mode)
+  :custom (writeroom-maximize-window nil))
+
 (provide 'init-note)
 ;;; init-note.el ends here
