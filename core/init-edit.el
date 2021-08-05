@@ -128,14 +128,6 @@
   :bind (("C-," . imenu))
   :ensure nil)
 
-;; Undo/Redo
-(use-package undo-fu
-  :bind (([remap undo] . undo-fu-only-undo)
-         ([remap undo-only] . undo-fu-only-undo)
-         ("C-+" . undo-fu-only-redo)))
-
-(use-package undo-tree)
-
 ;; Preview when `goto-char'
 (use-package goto-char-preview
   :bind (([remap goto-char] . goto-char-preview)))
@@ -178,7 +170,9 @@
 (use-package paredit)
 
 (use-package vundo
-  :straight (vundo :type git :host github :repo "casouri/vundo"))
+  :straight (vundo :type git :host github :repo "casouri/vundo")
+  :bind (("C-+" . undo-redo)
+         ("C-c u" . vundo)))
 
 (use-package dumb-jump
   :ensure t

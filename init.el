@@ -6,9 +6,7 @@
 ;; Special thanks to seagle0128, purcell, and doom-emacs
 
 ;;; Code:
-;; version checking
-(when (version< emacs-version "27")
-  (error "This Emacs is too old to support"))
+;; version checking >= 28
 
 ;; comment out for debugging
 (setq debug-on-error nil)

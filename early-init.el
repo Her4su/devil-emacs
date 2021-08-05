@@ -6,7 +6,7 @@
 
 ;;; Code:
 ;; defer garbage collection further back in the startup process
-(setq gc-cons-threshold most-positive-fixnum)
+;; (setq gc-cons-threshold most-positive-fixnum)
 
 ;; disable pacakge for speed up
 (setq package-enable-at-startup nil)

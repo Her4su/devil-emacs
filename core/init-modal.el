@@ -36,6 +36,7 @@
    '("d"  . dired)
    '("ed" . diff-vc-revisions)
    '("g"  . magit-status)
+   '("u"  . vundo)
    '("ib" . ibuffer)
    '("im" . imenu)
    ;; project
@@ -119,8 +120,6 @@
    '("T" . meow-till-expand)
    '("u" . meow-undo)
    '("U" . meow-undo-in-selection)
-   '("<" . undo-fu-only-undo)
-   '(">" . undo-fu-only-redo)
    '("v" . meow-visit)
    '("V" . meow-kmacro-matches)
    '("w" . meow-mark-word)
