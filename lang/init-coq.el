@@ -12,6 +12,7 @@
      pg-init--pg-root (file-name-directory pg-init--script-full-path)))
 
 (use-package proof-general
+  :diminish (holes-mode)
   :mode ("\\.v$" . coq-mode)
   :custom
   (proof-splash-enable nil)
@@ -22,6 +23,7 @@
     (setq meow-mode-state-list (push '(coq-mode . normal) meow-mode-state-list))))
 
 (use-package company-coq
+  :diminish
   :hook (coq-mode . company-coq-mode)
   :custom
   (company-coq-features/prettify-symbols-in-terminals t))

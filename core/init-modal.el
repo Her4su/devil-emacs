@@ -158,6 +158,9 @@
   :demand t
   :custom
   (meow-use-clipboard t)
+  :custom-face
+  (meow-insert-indicator ((t (:foreground "red"))))
+  (meow-motion-indicator ((t (:foreground "blue"))))
   :init
   (meow-global-mode 1)
   :config

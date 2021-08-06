@@ -74,5 +74,8 @@
          ("C-c 0" . eglot-code-actions)
          ("C-c h" . egdoc)))
 
+(use-package eldoc
+  :diminish)
+
 (provide 'init-prog)
 ;;; init-prog.el ends here

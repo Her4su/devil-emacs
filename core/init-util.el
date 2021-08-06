@@ -197,6 +197,7 @@
 ;; Tips for next keystroke
 (when my-use-which-key
   (use-package which-key
+    :diminish
     :hook (after-init . which-key-mode)
     :custom
     (which-key-idle-delay 0.5)

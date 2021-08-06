@@ -22,6 +22,7 @@
 
 ;; Work with large file
 (use-package so-long
+  :diminish
   :ensure nil
   :hook (after-init . global-so-long-mode))
 
@@ -156,6 +157,7 @@
   
 ;; Hideshow
 (use-package hideshow
+  :diminish hs-minor-mode
   :bind (("<C-tab>" . hs-toggle-hiding)
          ("C-c /"  . hs-hide-all)
          ("C-c \\" . hs-show-all))

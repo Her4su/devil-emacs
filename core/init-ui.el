@@ -36,14 +36,22 @@
 (when (display-graphic-p)
   (load-theme my-ui-theme t))
 
-;; a minimum modeline, doom-modeline is too heavy
 (use-package mini-modeline
   :diminish
+  :after (smart-mode-line)
   :custom-face
   ; use dracula color
-  (mini-modeline-mode-line ((t (:background "#bd93f9" :box nil :height 0.14))))
+  (mini-modeline-mode-line ((t (:background "#bd93f9" :box nil :height 0.1))))
+  :config (mini-modeline-mode t))
+
+(use-package smart-mode-line
+  :custom
+  (sml/shorten-modes t)
+  (sml/shorten-directory t)
+  (sml/name-width 30)
+  (sml/mode-width 'full)
   :config
-  (mini-modeline-mode t))
+  (sml/setup))
 
 ;; display dividers between windows
 (setq window-divider-default-places t

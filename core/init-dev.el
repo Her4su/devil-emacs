@@ -22,7 +22,7 @@
 
 ;; use magit for git VC
 (use-package magit
-   :bind (("C-x g" . magit-status)
+  :bind (("C-x g" . magit-status)
           ("C-x M-g" . magit-dispatch)
           ("C-c M-g" . magit-file-popup))
   :mode (("\\COMMIT_EDITMSG\\'" . text-mode)
@@ -54,14 +54,12 @@
 
 ;; syntax checking
 (use-package flymake
-  :diminish
   :hook
   (prog-mode . flymake-mode)
   (text-mode . flymake-mode)
-  :bind (("C-c !" . flymake-show-diagnostics-buffer)
-         ("C-c f l" . flymake-show-diagnostics-buffer)
-         ("C-c f p" . flymake-goto-prev-error)
-         ("C-c f n" . flymake-goto-next-error)))
+  :bind (("C-c f" . flymake-show-diagnostics-buffer)
+         ("C-c [" . flymake-goto-prev-error)
+         ("C-c ]" . flymake-goto-next-error)))
 
 ;; docker
 (use-package dockerfile-mode)

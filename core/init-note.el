@@ -5,6 +5,7 @@
 ;;; Code:
 
 (use-package cdlatex
+  :diminish org-cdlatex-mode
   :hook (org-mode . turn-on-org-cdlatex))
 
 (use-package org
