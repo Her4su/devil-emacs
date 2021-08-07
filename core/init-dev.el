@@ -10,9 +10,22 @@
   :ensure nil
   :bind (("C-c c c" . compile)
          ("C-c c r" . recompile)
-         ("C-c c e" . compile-goto-error))
+         ("C-c c e" . compile-goto-error)
+         ([remap compile] . my/compile)
+         ([remap recompile] . my/recompile))
   :custom
-  (compilation-scroll-output t))
+  (compilation-scroll-output t)
+  :preface
+  (defun my/compile ()
+    "Save before compilation."
+    (interactive)
+    (save-buffer)
+    (call-interactively 'compile))
+  (defun my/recompile ()
+    "Save before compilation."
+    (interactive)
+    (save-buffer)
+    (call-interactively 'recompile)))
 
 ;; quickrun codes
 (use-package quickrun

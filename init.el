@@ -72,7 +72,6 @@
 
 ;;; better UI
 (require 'init-ui)
-(require 'init-window)
 (require 'init-treemacs)
 
 ;;; better integration

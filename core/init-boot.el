@@ -14,11 +14,11 @@
 ;; gc hack
 (use-package gcmh
   :diminish
-  :init
-  (setq gcmh-verbose             t
-        gcmh-lows-cons-threshold #x800000
-        gcmh-high-cons-threshold #x10000000
-        gcmh-idle-delay          10)
+  :custom
+  (gcmh-verbose             nil)
+  (gcmh-lows-cons-threshold #x800000)
+  (gcmh-high-cons-threshold #x10000000)
+  (gcmh-idle-delay          10)
   :config
   (gcmh-mode))
 

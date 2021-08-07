@@ -153,6 +153,7 @@
 ;; only recomment under linux, others are too slow
 (use-package pdf-tools
   :defer t
+  :mode ("\\.pdf$" . pdf-view-mode)
   :config
   (setq-default pdf-view-display-size 'fit-width)
   :bind (:map pdf-view-mode-map
