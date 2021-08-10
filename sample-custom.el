@@ -10,7 +10,7 @@
  my-font-size "10" ; font size
  my-use-linum nil ; show line number in side bar
  my-use-which-key t ; show key hints
- my-use-evil t ; use evil
+ my-use-evil nil ; use evil
  my-lisp-compiler "sbcl"
  my-ui-theme 'doom-one-light
  my-language-list ; the langauges you want to enable

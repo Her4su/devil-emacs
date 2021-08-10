@@ -41,7 +41,7 @@
   :commands (get-current-persp persp-contain-buffer-p)
   :hook ((after-init . persp-mode))
   :init
-  (setq-default persp-keymap-prefix (kbd "C-c p"))
+  (setq-default persp-keymap-prefix (kbd "C-x p"))
   (setq
    persp-nil-name "default"
    persp-set-last-persp-for-new-frames nil

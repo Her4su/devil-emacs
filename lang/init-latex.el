@@ -9,6 +9,7 @@
   :defer t
   :hook
   ((LaTeX-mode . visual-line-mode)
+   (LaTex-mode . auto-fill-mode)
    (LaTeX-mode . flymake-mode)
    (LaTeX-mode . LaTeX-math-mode)
    (LaTeX-mode . company-mode))
@@ -29,12 +30,11 @@
                 TeX-engine 'xetex)
 
   (use-package company-auctex
-    :after (auctex company)
+    :after (company)
     :init
     (company-auctex-init))
 
   (use-package auctex-latexmk
-    :after (auctex)
     :init
     (auctex-latexmk-setup)
     :custom

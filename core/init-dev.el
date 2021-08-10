@@ -1,6 +1,6 @@
 ;;; init-dev.el --- development related tools
 ;;; Commentary:
-;; currently includes git, docker, and projectile
+;; currently includes git, docker, and project management
 
 ;;; Code:
 (require 'init-const)
@@ -57,11 +57,10 @@
 
 ;; project managemnt
 (use-package project
-  :ensure nil
-  :init
-  (define-key ctl-x-map "p" project-prefix-map))
- 
-;; use ripgrep to power up search speed
+  :config
+  (global-set-key (kbd "C-c p") project-prefix-map))
+
+  ;; use ripgrep to power up search speed
 (use-package ripgrep
   :defer t)
 
