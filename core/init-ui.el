@@ -36,14 +36,6 @@
 (when (display-graphic-p)
   (load-theme my-ui-theme t))
 
-(use-package mini-modeline
-  :diminish
-  :after (smart-mode-line)
-  :custom-face
-  ; use dracula color
-  (mini-modeline-mode-line ((t (:background "#bd93f9" :box nil :height 0.1))))
-  :config (mini-modeline-mode t))
-
 (use-package smart-mode-line
   :custom
   (sml/shorten-modes t)
@@ -53,10 +45,19 @@
   :config
   (sml/setup))
 
+(use-package mini-modeline
+  :diminish
+  :after (smart-mode-line)
+  :custom-face
+  ; use dracula color
+  (mini-modeline-mode-line ((t (:background "#bd93f9" :box nil :height 0.1))))
+  :config (mini-modeline-mode t))
+
 ;; display dividers between windows
+;; don't make it too small to control
 (setq window-divider-default-places t
-      window-divider-default-bottom-width 1
-      window-divider-default-right-width 1)
+      window-divider-default-bottom-width 3
+      window-divider-default-right-width 3)
 
 (add-hook 'window-setup-hook #'window-divider-mode)
 

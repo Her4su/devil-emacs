@@ -33,8 +33,8 @@
   :group 'my-setting
   :type '(boolean))
 
-(defcustom my-use-evil t
-  "Use evil by default."
+(defcustom my-detailed-ui t
+  "Use mininum UI by default."
   :group 'my-setting
   :type '(boolean))
 
@@ -43,18 +43,8 @@
   :group 'my-setting
   :type '(boolean))
 
-(defcustom my-language-list
-  '(clisp
-    coq
-    cpp
-    haskell
-    idris
-    latex
-    ocaml
-    julia
-    python
-    racket
-    rust)
+(defcustom my-extra-list
+  '(modal)
   "The list of languages to custom file."
   :group 'my-setting
   :type '(list symbol))
@@ -85,9 +75,9 @@
   (>= emacs-major-version 27)
   "Emacs is 27 or above.")
 
-(defmacro my-load-lang (lang)
+(defmacro my-load-extra (lang)
   "Load a LANG when it's in language list."
-  (when (member lang my-language-list)
+  (when (member lang my-extra-list)
     (let ((lang-file
            (intern
             (concat "init-" (symbol-name lang)))))

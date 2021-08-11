@@ -2,7 +2,7 @@
 *
 # Now, whitelist anything that's a directory
 !core/
-!lang/
+!extra/
 # And all the file types you're interested in.
 !*.el
 !README.org

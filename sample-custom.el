@@ -10,11 +10,26 @@
  my-font-size "10" ; font size
  my-use-linum nil ; show line number in side bar
  my-use-which-key t ; show key hints
- my-use-evil nil ; use evil
  my-lisp-compiler "sbcl"
- my-ui-theme 'doom-one-light
- my-language-list ; the langauges you want to enable
- '(agda clisp coq cpp julia haskell idris latex ocaml racket rust erlang))
+ my-ui-theme 'doom-tomorrow-day
+ my-detailed-ui t
+ my-extra-list ; the langauges you want to enable
+ '(; a list of features to turn on
+   ; modal      ;; modal editing
+   ; media      ;; media player
+   agda       ;; Agda theorem prover
+   clisp      ;; Common Lisp
+   coq        ;; Coq theorem prover
+   cpp        ;; C/C++
+   julia      ;; Julia
+   haskell    ;; Haskell
+   idris      ;; Idris
+   latex      ;; Latex
+   ocaml      ;; OCaml
+   racket     ;; Racket and Scheme
+   rust       ;; Rust
+   erlang     ;; Erlang
+   ))
 
 (setq debug-on-error nil)
 

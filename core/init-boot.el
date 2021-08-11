@@ -11,6 +11,14 @@
 (when (fboundp 'set-charset-priority)
   (set-charset-priority 'unicode))
 
+;; better gui
+(when my-detailed-ui
+  (progn
+    (push '(menu-bar-lines . 1) default-frame-alist) ;; remove mini menu
+    (push '(tool-bar-lines . 1) default-frame-alist) ;; remove tool icon
+    (when (featurep 'ns)
+      (push '(ns-transparent-titlebar . t) default-frame-alist))))
+
 ;; gc hack
 (use-package gcmh
   :diminish
@@ -126,6 +134,9 @@
       adaptive-fill-first-line-regexp "^* *$"
       sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*"
       sentence-end-double-space nil)
+
+(use-package transient
+  :ensure nil)
 
 (use-package emacs
   :ensure nil

@@ -58,7 +58,7 @@
 ;; core for core utility such as UI and completions
 ;; lang for programming language settings
 (add-to-list 'load-path (expand-file-name "core" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "lang" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "extra" user-emacs-directory))
 
 ;; initialize constants and helper functions
 (require 'init-const)
@@ -67,7 +67,6 @@
 ;;; better editing
 (require 'init-edit)
 (require 'init-search)
-(require 'init-modal)
 (require 'init-workspace)
 
 ;;; better UI
@@ -81,17 +80,21 @@
 (require 'init-prog)
 (require 'init-util)
 
+;; Extra Emacs utlityies
+(my-load-extra modal)
+(my-load-extra media)
+
 ;;; programming languages environment
-(my-load-lang cpp)
-(my-load-lang agda)
-(my-load-lang coq)
-(my-load-lang ocaml)
-(my-load-lang racket)
-(my-load-lang clisp)
-(my-load-lang idris)
-(my-load-lang rust)
-(my-load-lang haskell)
-(my-load-lang latex)
-(my-load-lang erlang)
-(my-load-lang julia)
+(my-load-extra cpp)
+(my-load-extra agda)
+(my-load-extra coq)
+(my-load-extra ocaml)
+(my-load-extra racket)
+(my-load-extra clisp)
+(my-load-extra idris)
+(my-load-extra rust)
+(my-load-extra haskell)
+(my-load-extra latex)
+(my-load-extra erlang)
+(my-load-extra julia)
 ;;; init.el ends here

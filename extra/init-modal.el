@@ -156,7 +156,6 @@
 
 (use-package meow
   :demand t
-  :when my-use-evil
   :custom
   (meow-use-clipboard t)
   :custom-face
