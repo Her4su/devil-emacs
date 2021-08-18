@@ -18,7 +18,7 @@
    ; modal      ;; modal editing
    ; media      ;; media player
    agda       ;; Agda theorem prover
-   clisp      ;; Common Lisp
+   lisp       ;; Common Lisp
    coq        ;; Coq theorem prover
    cpp        ;; C/C++
    julia      ;; Julia
@@ -26,7 +26,6 @@
    idris      ;; Idris
    latex      ;; Latex
    ocaml      ;; OCaml
-   racket     ;; Racket and Scheme
    rust       ;; Rust
    erlang     ;; Erlang
    ))

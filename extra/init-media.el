@@ -4,24 +4,27 @@
 
 (use-package emms
   :bind (("C-c 1" . emms-transient))
-  :preface
+  :custom
+  (emms-source-file-default-directory "~/Music/")
+  :config
   (transient-define-prefix emms-transient ()
     "Emms Player"
     :transient-suffix 'transient--do-stay
     ["Player"
      ("d" "play" emms-play-directory)
-     ("r" "random" emms-random)
-     ("n" "next" emms-next)
-     ("p" "previous" emms-previous)
+     ("r" "random next" emms-random)
+     (">" "next" emms-next)
+     ("<" "previous" emms-previous)
      ("f" "show" emms-show)
      ("s" "stop" emms-pause)
+     ("R" "toggle random" emms-toggle-random-playlist)
+     ("m" "menu" emms-playlist-mode-go-popup)
      ("+" "volume up" emms-volume-raise)
      ("-" "volume down" emms-volume-lower)])
-  :custom
-  (emms-source-file-default-directory "~/Music/")
-  :config
+  ;; loading
   (emms-all)
-  (emms-default-players))
+  (emms-default-players)
+  (emms-toggle-random-playlist))
 
 ;; read pdf handy
 ;; only recomment under linux, others are too slow

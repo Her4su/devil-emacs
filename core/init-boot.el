@@ -136,6 +136,10 @@
       sentence-end-double-space nil)
 
 (use-package transient
+  :config
+  (transient-bind-q-to-quit)
+  :custom
+  (transient-enable-popup-navigation nil)
   :ensure nil)
 
 (use-package emacs

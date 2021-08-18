@@ -144,17 +144,6 @@
   :hook ((prog-mode . subword-mode)
          (minibuffer-setup . subword-mode)))
 
-(use-package multiple-cursors
-  :bind (("C-<" . mc/mark-previous-like-this)
-         ("C->" . mc/mark-next-like-this)
-         ("C-; m" . mc/mark-all-like-this)
-         ("C-; l" . mc/edit-lines)
-         ("C-; SPC" . mc/mark-all-in-region)
-         ("C-; s" . mc/sort-regions)
-         ("C-; r" . mc/reverse-regions)
-         ("C-; e" . mc/edit-ends-of-lines)
-         ("C-; a" . mc/edit-beginnings-of-lines)))
-  
 ;; Hideshow
 (use-package hideshow
   :diminish hs-minor-mode

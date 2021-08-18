@@ -1,4 +1,4 @@
-;;; init-clisp.el --- Common Lisp
+;;; init-lisp.el --- Lisp
 ;;; Commentary:
 ;; require https://github.com/roswell/roswell/
 
@@ -28,5 +28,14 @@
   :defer t
   :after (yasnippet))
 
-(provide 'init-clisp)
-;;; init-clisp.el ends here
+(use-package geiser-guile
+  :hook ((geiser-mode . paredit-mode))
+  :bind (:map
+         paredit-mode-map
+         ("[" . paredit-open-round)
+         ("(" . paredit-open-square)
+         ("M-[" . paredit-wrap-square)
+         ("M-{" . paredit-wrap-curly)))
+
+(provide 'init-lisp)
+;;; init-lisp.el ends here
