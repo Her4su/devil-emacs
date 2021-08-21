@@ -3,12 +3,13 @@
 # Now, whitelist anything that's a directory
 !core/
 !modules/
-!extra/
+!modules/lang
 # And all the file types you're interested in.
 !*.el
 !README.org
 !.gitignore
 !LICENSE
+!extra/
 # And again XD
 custom.el
 .mc-lists.el
