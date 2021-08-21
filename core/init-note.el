@@ -30,7 +30,7 @@
      (ocaml . t)))
   :config
   (setq org-format-latex-options
-        (plist-put org-format-latex-options :scale 2.5)))
+        (plist-put org-format-latex-options :scale 1)))
 
 ;; pretty symbols
 (use-package org-bullets
@@ -44,6 +44,17 @@
 (use-package writeroom-mode
   :bind ("C-c ~" . writeroom-mode)
   :custom (writeroom-maximize-window nil))
+
+(use-package deft
+  :commands (deft)
+  :bind ("C-c 2" . deft)
+  :config
+  (setq deft-directory "~/Documents/Deft"
+        deft-recursive t
+        deft-default-extension "org"
+        deft-extensions '("md" "org" "txt" "tex"))
+  (unless (file-directory-p "~/Documents/Deft")
+    (deft-setup)))
 
 (provide 'init-note)
 ;;; init-note.el ends here

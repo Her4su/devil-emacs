@@ -47,7 +47,7 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; default directory
-(setq default-directory "~")
+(setq default-directory "~/")
 
 ;; no bell
 (setq ring-bell-function 'ignore)

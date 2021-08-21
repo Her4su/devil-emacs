@@ -38,11 +38,6 @@
   :group 'my-setting
   :type '(boolean))
 
-(defcustom my-use-which-key t
-  "Show key hints."
-  :group 'my-setting
-  :type '(boolean))
-
 (defcustom my-extra-list
   '(modal)
   "The list of languages to custom file."
@@ -93,13 +88,6 @@
   (let ((module-name (first list))
         (dependencies (rest list)))
     (seq-remove (lambda (e) (executable-find e)) dependencies)))
-
-(defun my-update-all ()
-  "Update all the pacakges."
-  (interactive
-   (progn
-     (straight-pull-all)
-     (straight-rebuild-all))))
 
 (defun my/font-info ()
   "Get the current font name with size."

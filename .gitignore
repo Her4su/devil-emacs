@@ -2,6 +2,7 @@
 *
 # Now, whitelist anything that's a directory
 !core/
+!modules/
 !extra/
 # And all the file types you're interested in.
 !*.el

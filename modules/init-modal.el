@@ -29,6 +29,7 @@
    '("?" . meow-cheatsheet)
    
    '("a"  . align-regexp)
+   '("b"  . ibuffer)
    '("o"  . ace-window)
    '("O"  . ace-swap-window)
    '("|"  . split-window-right)
@@ -150,6 +151,8 @@
    '(",=" . eglot-format)
    '(",-" . eglot-rename)
    '(",0" . eglot-code-actions)
+   '(",1" . emms-transient)
+   '(",2" . deft)
    '(",h" . egdoc)
    '("\\" . quoted-insert)
    '("<escape>" . meow-last-buffer)))

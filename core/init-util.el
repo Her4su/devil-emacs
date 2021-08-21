@@ -167,9 +167,13 @@
     (add-to-list 'backup-directory-alist
                  (cons tramp-file-name-regexp backup-dir))))
 
-;; Tips for next keystroke
-(when my-use-which-key
-  (use-package which-key
+(use-package notifications
+  :ensure nil
+  :commands notify-send
+  :config
+  (defalias 'notify-send 'notifications-notify))
+
+(use-package which-key
     :diminish
     :hook (after-init . which-key-mode)
     :custom
@@ -179,15 +183,15 @@
     (which-key-add-keymap-based-replacements ctl-x-map
       "a" '("abbrev")
       "x" '("misc")
-      "p" '("project")
+      "p" '("persp")
       "t" '("treemacs")
       "<tab>" '("indent"))
     (which-key-add-key-based-replacements
       "C-c @" "hide"
       "C-c v" "magic"
-      "C-c p" "workspace"
+      "C-c p" "project"
       "C-c f" "check"
-      "C-c c" "code")))
+      "C-c c" "code"))
 
 (provide 'init-util)
 ;;; init-util.el ends here

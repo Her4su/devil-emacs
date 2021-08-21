@@ -106,6 +106,7 @@
         xref-show-definitions-function #'consult-xref)
 
   :config
+  ;; customize
   (consult-customize
    consult-theme
    :preview-key '(:debounce 0.2 any)
@@ -133,7 +134,10 @@
   :bind
   (("C-c e" . embark-act)
    ("C-;" . embark-dwim)
-   ("C-h B" . embark-bindings))
+   ("C-h B" . embark-bindings)
+   :map minibuffer-local-map
+   ("C-c C-o" . embark-expoort)
+   ("C-c C-c" . embark-collect-snapshot))
   :init
   ;; Optionally replace the key help with a completing-read interface
   (setq prefix-help-command #'embark-prefix-help-command)
@@ -151,6 +155,21 @@
   :demand t
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
+
+;; use it where company does not have a default backend
+(use-package corfu
+  :hook
+  (eshell-mode . corfu-mode)
+  (shell-mode . corfu-mode)
+  :bind (:map corfu-map
+              ("TAB" . corfu-next)
+              ([tab] . corfu-next)
+              ("S-TAB" . corfu-previous)
+              ([backtab] . corfu-previous))
+  :custom
+  (corfu-cycle t)
+  (corfu-auto t)
+  (corfu-echo-documentation t))
 
 (provide 'init-search)
 ;;; init-search.el ends here

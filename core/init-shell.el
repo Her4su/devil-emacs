@@ -4,19 +4,40 @@
 
 ;;; Code:
 
-(use-package eshell)
-
-(use-package aweshell
-  :straight (aweshell :type git :host github
-                      :repo "manateelazycat/aweshell"))
-
+(use-package eshell
+  :preface
+  :init
+  (setq
+   eshell-highlight-prompt nil
+   eshell-smart t
+   eshell-buffer-shorthand t
+   eshell-cmpl-ignore-case t
+   eshell-cmpl-cycle-completions t
+   eshell-destroy-buffer-when-process-dies t
+   eshell-history-size 10000
+   ;; auto truncate after 20k lines
+   eshell-buffer-maximum-lines 20000
+   eshell-hist-ignoredups t
+   eshell-error-if-no-glob t
+   eshell-glob-case-insensitive t
+   eshell-scroll-to-bottom-on-input 'all
+   eshell-scroll-to-bottom-on-output 'all
+   eshell-list-files-after-cd t
+   eshell-banner-message "")
+  :config
+  (use-package eshell-prompt-extras
+    :after esh-opt
+    :config
+    (autoload 'epe-theme-multiline-with-status "eshell-prompt-extras")
+    (setq eshell-prompt-function 'epe-theme-lambda))
+  (use-package eshell-syntax-highlighting
+    :after esh-mode
+    :demand t
+    :config
+    (eshell-syntax-highlighting-global-mode +1)))
+  
 (use-package shell
-  :ensure nil
-  :hook (shell-mode . (lambda ()
-                        (term-mode-common-init)
-                        (my/buffer-auto-close)))
-  :bind (:map shell-mode-map
-         ("M-r" . counsel-shell-history)))
+  :ensure nil)
 
 ;; Shell Pop
 (use-package shell-pop
@@ -26,9 +47,6 @@
   (shell-pop-shell-type
    '("eshell" "*eshell*" (lambda ()
                            (eshell)))))
-        
-(use-package fish-mode
-  :mode "\\.fish$")
-
+     
 (provide 'init-shell)
 ;;; init-shell.el ends here

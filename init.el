@@ -58,7 +58,8 @@
 ;; core for core utility such as UI and completions
 ;; lang for programming language settings
 (add-to-list 'load-path (expand-file-name "core" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "extra" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "modules" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "modules/lang" user-emacs-directory))
 
 ;; initialize constants and helper functions
 (require 'init-const)
@@ -71,7 +72,7 @@
 
 ;;; better UI
 (require 'init-ui)
-(require 'init-treemacs)
+(require 'init-sidebar)
 
 ;;; better integration
 (require 'init-shell)

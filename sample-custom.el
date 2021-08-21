@@ -9,7 +9,6 @@
  my-font-name "JetBrains Mono" ; default font
  my-font-size "10" ; font size
  my-use-linum nil ; show line number in side bar
- my-use-which-key t ; show key hints
  my-lisp-compiler "sbcl"
  my-ui-theme 'doom-tomorrow-day
  my-detailed-ui t

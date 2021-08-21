@@ -10,17 +10,19 @@
      + =dev=: development relating tools
      + =edit=: editing config like jumping and checking
      + =shell=: shell settings
-     + =modal=: modal editing and keybindings
-     + =highlight=: highlight content such as paren and lines
+     + =prog=: base setting for programming (LSP, complete system)
      + =search=: configuration of fuzzy matching framework
-     + =lsp=: language server and auto-complete settings
      + =note=: noting by org mode and markdown
      + =ui=: the UI themes
      + =util=: misc tools
-     + =window=: windows managements by winner
-     + =persp/treemacs=: separated settings for two packages
-   + =lang=: programming language settings
-     + ...
+     + =workspace=: windows and sessions managements
+     + =sidebar=: side bar for viewing projects
+   + =modules=:
+     + various programming language settings
+     + =media= (pdf, music)
+     + =modal=: modal editing
+     + =commu=: communication (email and irc)
+     + =latex=: writing latex
 
 ** Design
 

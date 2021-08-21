@@ -1,4 +1,4 @@
-;;; init-treemacs.el --- Load back files
+;;; init-sidebar.el --- Load back files
 ;;; Commentary:
 ;;
 
@@ -45,5 +45,5 @@
             magit-post-unstage)
            . treemacs-magit--schedule-update)))
   
-(provide 'init-treemacs)
-;;; init-treemacs.el ends here
+(provide 'init-sidebar)
+;;; init-sidebar.el ends here
