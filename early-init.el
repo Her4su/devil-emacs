@@ -62,7 +62,7 @@
 ;; add scratch message
 (setq initial-scratch-message
       (concat
-       ";; Arcahv!\n"
+       ";; Erupmi\n"
        ";; Customize config in `custom.el`.\n\n"))
 
 ;;; early-init ends here

@@ -77,5 +77,11 @@
 (use-package eldoc
   :diminish)
 
+(use-package tree-sitter
+  :diminish
+  :config
+  (use-package tree-sitter-langs)
+  (global-tree-sitter-mode))
+
 (provide 'init-prog)
 ;;; init-prog.el ends here
