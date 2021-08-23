@@ -9,7 +9,7 @@
 !README.org
 !.gitignore
 !LICENSE
-!extra/
+!extra/.gitkeep
 # And again XD
 custom.el
 .mc-lists.el

@@ -1,4 +1,4 @@
-;;; init-clisp.el --- latex
+;;; init-latex.el --- latex
 ;;; Commentary:
 ;; I know, latex is not a programming language generally speaking
 ;; but it is turing-complete

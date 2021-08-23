@@ -60,21 +60,22 @@
 (add-to-list 'load-path (expand-file-name "core" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "modules" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "modules/lang" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "extra" user-emacs-directory))
 
 ;; initialize constants and helper functions
 (require 'init-const)
 (require 'init-boot)
 
-;;; better editing
+;; better editing
 (require 'init-edit)
 (require 'init-search)
 (require 'init-workspace)
 
-;;; better UI
+;; better UI
 (require 'init-ui)
 (require 'init-sidebar)
 
-;;; better integration
+;; better integration
 (require 'init-shell)
 (require 'init-note)
 (require 'init-dev)
@@ -82,19 +83,22 @@
 (require 'init-util)
 
 ;; Extra Emacs utlityies
-(my-load-extra modal)
-(my-load-extra media)
+(my/load-module modal)
+(my/load-module media)
+(my/load-module latex)
+(my/load-module commu)
 
-;;; programming languages environment
-(my-load-extra cpp)
-(my-load-extra agda)
-(my-load-extra coq)
-(my-load-extra ocaml)
-(my-load-extra lisp)
-(my-load-extra idris)
-(my-load-extra rust)
-(my-load-extra haskell)
-(my-load-extra latex)
-(my-load-extra erlang)
-(my-load-extra julia)
+;; programming languages environment
+(my/load-module cpp)
+(my/load-module agda)
+(my/load-module coq)
+(my/load-module ocaml)
+(my/load-module lisp)
+(my/load-module idris)
+(my/load-module rust)
+(my/load-module haskell)
+(my/load-module erlang)
+(my/load-module julia)
+
+(my/load-extras)
 ;;; init.el ends here

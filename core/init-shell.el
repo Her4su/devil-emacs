@@ -6,7 +6,7 @@
 
 (use-package eshell
   :preface
-  :init
+  :config
   (setq
    eshell-highlight-prompt nil
    eshell-smart t
@@ -24,7 +24,6 @@
    eshell-scroll-to-bottom-on-output 'all
    eshell-list-files-after-cd t
    eshell-banner-message "")
-  :config
   (use-package eshell-prompt-extras
     :after esh-opt
     :config

@@ -144,7 +144,7 @@
   :hook ((prog-mode . subword-mode)
          (minibuffer-setup . subword-mode)))
 
-;; Hideshow
+;; Hide Code Segment
 (use-package hideshow
   :diminish hs-minor-mode
   :bind (("<C-tab>" . hs-toggle-hiding)
@@ -158,8 +158,10 @@
   :diminish
   :hook (after-init . fancy-narrow-mode))
 
+;; Structural Editing in S-Exp
 (use-package paredit)
 
+;; Visualize undo tree
 (use-package vundo
   :straight (vundo :type git :host github :repo "casouri/vundo")
   :bind (("C-+" . undo-redo)

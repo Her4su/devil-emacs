@@ -36,6 +36,7 @@
    ("C-x /" . split-window-right)
    ("C-x -" . split-window-below)))
 
+;; store session information
 (use-package persp-mode
   :diminish
   :commands (get-current-persp persp-contain-buffer-p)

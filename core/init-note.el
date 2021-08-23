@@ -4,6 +4,8 @@
 
 ;;; Code:
 
+(require 'init-const)
+
 (use-package cdlatex
   :diminish org-cdlatex-mode
   :hook (org-mode . turn-on-org-cdlatex))
@@ -30,7 +32,7 @@
      (ocaml . t)))
   :config
   (setq org-format-latex-options
-        (plist-put org-format-latex-options :scale 1)))
+        (plist-put org-format-latex-options :scale my-org-latex-scale)))
 
 ;; pretty symbols
 (use-package org-bullets
@@ -49,11 +51,11 @@
   :commands (deft)
   :bind ("C-c 2" . deft)
   :config
-  (setq deft-directory "~/Documents/Deft"
+  (setq deft-directory "~/Documents/deft"
         deft-recursive t
         deft-default-extension "org"
         deft-extensions '("md" "org" "txt" "tex"))
-  (unless (file-directory-p "~/Documents/Deft")
+  (unless (file-directory-p "~/Documents/deft")
     (deft-setup)))
 
 (provide 'init-note)

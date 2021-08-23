@@ -41,7 +41,8 @@
    '("ib" . ibuffer)
    '("im" . imenu)
    ;; project
-   '("pr" . project-find-regexp)
+   '("pg" . project-find-regexp)
+   '("pr" . project-query-replace-regexp)
    '("ps" . project-search)
    '("pd" . project-dired)
    '("pf" . project-find-file)

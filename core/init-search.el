@@ -1,6 +1,6 @@
 ;;; init-search.el --- search configuration
 ;;; Commentary:
-;; fuzzy complement framework
+;; fuzzy completion framework
 
 ;;; Code:
 
@@ -20,6 +20,7 @@
   :custom
   (completion-styles '(orderless)))
 
+;; detailed minibuffer
 (use-package marginalia
   :bind (("M-A" . marginalia-cycle)
          :map minibuffer-local-map

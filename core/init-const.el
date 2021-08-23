@@ -13,7 +13,7 @@
   :type '(symbol list)
   :group 'my-setting)
 
-(defcustom my-font-name "Fira Code"
+(defcustom my-font-name "JetBrains Mono"
   "My font name."
   :type '(string)
   :group 'my-setting)
@@ -23,7 +23,7 @@
   :type '(symbol)
   :group 'my-setting)
 
-(defcustom my-font-size "13"
+(defcustom my-font-size "10"
   "My font size."
   :group 'my-setting
   :type '(integer))
@@ -38,9 +38,15 @@
   :group 'my-setting
   :type '(boolean))
 
-(defcustom my-extra-list
-  '(modal)
-  "The list of languages to custom file."
+(defcustom my-modules
+  '()
+  "The list of modules to enable."
+  :group 'my-setting
+  :type '(list symbol))
+
+(defcustom my-extra-files
+  '()
+  "The list of customize mode files."
   :group 'my-setting
   :type '(list symbol))
 
@@ -49,11 +55,12 @@
   :group 'my-setting
   :type '(string))
 
-;; helper constants
-(defconst sys/linuxp
-  (eq system-type 'gnu/linux)
-  "Are we running on a GNU/Linux system?")
+(defcustom my-org-latex-scale 1.0
+  "The scaling for latex rendering in org mode"
+  :group 'my-setting
+  :type '(integer))
 
+;; helper constants
 (defconst sys/macp
   (eq system-type 'darwin)
   "Are we running on a Mac system?")
@@ -62,21 +69,22 @@
   (and (display-graphic-p) sys/macp)
   "Are we running under X on a Mac system?")
 
-(defconst sys/linux-x-p
-  (and (display-graphic-p) sys/linuxp)
-  "Are we running under X on a GNU/Linux system?")
-
 (defconst emacs/>=27p
   (>= emacs-major-version 27)
   "Emacs is 27 or above.")
 
-(defmacro my-load-extra (lang)
+(defmacro my/load-module (lang)
   "Load a LANG when it's in language list."
-  (when (member lang my-extra-list)
+  (when (member lang my-modules)
     (let ((lang-file
            (intern
             (concat "init-" (symbol-name lang)))))
       `(require ',lang-file))))
+
+(defun my/load-extras ()
+  "Load the user's customized files"
+  (mapcar (lambda (my-file) (require my-file))
+          my-extra-files))
 
 ;; check if a font exits
 (defun font-installed-p (font-name)
@@ -94,15 +102,14 @@
   (concat my-font-name " " my-font-size))
 
 ;; load custom file
-(setq custom-file
-      (expand-file-name "custom.el" user-emacs-directory))
-
-(unless (file-exists-p custom-file)
-  (copy-file
-   (expand-file-name "sample-custom.el" user-emacs-directory)
-   custom-file))
-
-(load-file custom-file)
+(progn
+  (setq custom-file
+        (expand-file-name "custom.el" user-emacs-directory)) 
+  (unless (file-exists-p custom-file)
+    (copy-file
+     (expand-file-name "sample-custom.el" user-emacs-directory)
+     custom-file))  
+  (load-file custom-file))
 
 (provide 'init-const)
 ;;; init-const.el ends here
