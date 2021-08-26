@@ -4,12 +4,12 @@
 !core/
 !modules/
 !modules/lang
+!extra/
 # And all the file types you're interested in.
 !*.el
 !README.org
 !.gitignore
 !LICENSE
-!extra/.gitkeep
 # And again XD
 custom.el
 .mc-lists.el
